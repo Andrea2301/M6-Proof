@@ -18,10 +18,12 @@ namespace TalentoPlus.Web.Controllers
         public async Task<IActionResult> GenerateResume(int id)
         {
             var employee = await _unitOfWork.Employees.GetByIdAsync(id);
-            if (employee == null) return NotFound();
-            
-            var pdfBytes = await _pdfService.GenerateResumeAsync(employee);
+            if (employee == null) 
+                return NotFound();
+
+            var pdfBytes = _pdfService.GenerateEmployeeResume(employee);
             return File(pdfBytes, "application/pdf", $"Resume_{employee.Document}.pdf");
         }
+
     }
 }

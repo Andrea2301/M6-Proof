@@ -1,36 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/TalentoPlus.Api.csproj": {}
+    "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Api/TalentoPlus.Api.csproj": {}
   },
   "projects": {
-    "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/TalentoPlus.Api.csproj": {
+    "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Api/TalentoPlus.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/TalentoPlus.Api.csproj",
+        "projectUniqueName": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Api/TalentoPlus.Api.csproj",
         "projectName": "TalentoPlus.Api",
-        "projectPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/TalentoPlus.Api.csproj",
-        "packagesPath": "/home/cami/.nuget/packages/",
-        "outputPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/obj/",
+        "projectPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Api/TalentoPlus.Api.csproj",
+        "packagesPath": "/home/coders/.nuget/packages/",
+        "outputPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/cami/.nuget/NuGet/NuGet.Config"
+          "/home/coders/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "/usr/lib/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Core/TalentoPlus.Core.csproj": {
-                "projectPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Core/TalentoPlus.Core.csproj"
+              "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Core/TalentoPlus.Core.csproj": {
+                "projectPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Core/TalentoPlus.Core.csproj"
               },
-              "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Infrastructure/TalentoPlus.Infrastructure.csproj": {
-                "projectPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Infrastructure/TalentoPlus.Infrastructure.csproj"
+              "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Infrastructure/TalentoPlus.Infrastructure.csproj": {
+                "projectPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Infrastructure/TalentoPlus.Infrastructure.csproj"
               }
             }
           }
@@ -44,7 +45,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -71,6 +73,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2025.7.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -114,26 +120,27 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.112/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Core/TalentoPlus.Core.csproj": {
+    "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Core/TalentoPlus.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Core/TalentoPlus.Core.csproj",
+        "projectUniqueName": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Core/TalentoPlus.Core.csproj",
         "projectName": "TalentoPlus.Core",
-        "projectPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Core/TalentoPlus.Core.csproj",
-        "packagesPath": "/home/cami/.nuget/packages/",
-        "outputPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Core/obj/",
+        "projectPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Core/TalentoPlus.Core.csproj",
+        "packagesPath": "/home/coders/.nuget/packages/",
+        "outputPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/cami/.nuget/NuGet/NuGet.Config"
+          "/home/coders/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "/usr/lib/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -151,7 +158,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -196,37 +204,38 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.112/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Infrastructure/TalentoPlus.Infrastructure.csproj": {
+    "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Infrastructure/TalentoPlus.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Infrastructure/TalentoPlus.Infrastructure.csproj",
+        "projectUniqueName": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Infrastructure/TalentoPlus.Infrastructure.csproj",
         "projectName": "TalentoPlus.Infrastructure",
-        "projectPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Infrastructure/TalentoPlus.Infrastructure.csproj",
-        "packagesPath": "/home/cami/.nuget/packages/",
-        "outputPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Infrastructure/obj/",
+        "projectPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Infrastructure/TalentoPlus.Infrastructure.csproj",
+        "packagesPath": "/home/coders/.nuget/packages/",
+        "outputPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/cami/.nuget/NuGet/NuGet.Config"
+          "/home/coders/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "/usr/lib/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Core/TalentoPlus.Core.csproj": {
-                "projectPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Core/TalentoPlus.Core.csproj"
+              "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Core/TalentoPlus.Core.csproj": {
+                "projectPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Core/TalentoPlus.Core.csproj"
               },
-              "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj": {
-                "projectPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj"
+              "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj": {
+                "projectPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj"
               }
             }
           }
@@ -240,7 +249,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -249,6 +259,10 @@
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.0.3, )"
+            },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.105.0, )"
             },
             "EPPlus": {
               "target": "Package",
@@ -261,6 +275,10 @@
             "MailKit": {
               "target": "Package",
               "version": "[4.14.1, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -283,6 +301,10 @@
               "version": "[10.0.0, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[8.0.0, )"
             },
@@ -317,26 +339,27 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.112/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj": {
+    "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj",
+        "projectUniqueName": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj",
         "projectName": "TalentoPlus.Shared",
-        "projectPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj",
-        "packagesPath": "/home/cami/.nuget/packages/",
-        "outputPath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/obj/",
+        "projectPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj",
+        "packagesPath": "/home/coders/.nuget/packages/",
+        "outputPath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/cami/.nuget/NuGet/NuGet.Config"
+          "/home/coders/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "/usr/lib/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -354,7 +377,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -385,7 +409,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.112/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

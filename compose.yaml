@@ -1,0 +1,41 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: talentoplus-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: TalentoPlusDB
+      MYSQL_USER: talentoplus
+      MYSQL_PASSWORD: talentoplus123
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - talentoplus-network
+
+  talentoplus.api:
+    build:
+      context: .
+      dockerfile: src/TalentoPlus.Api/Dockerfile
+    container_name: talentoplus-api
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: TalentoPlusDB
+      DB_USER: talentoplus
+      DB_PASSWORD: talentoplus123
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - talentoplus-network
+
+volumes:
+  db_data:
+
+networks:
+  talentoplus-network:
+    driver: bridge
+

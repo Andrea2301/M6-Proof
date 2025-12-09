@@ -1,130 +1,149 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+using TalentoPlus.Core.DTOs;
 using TalentoPlus.Core.Entities;
 using TalentoPlus.Core.Interfaces;
-using TalentoPlus.Core.DTOs;
 
 namespace TalentoPlus.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IEmailService _emailService;
-        private readonly IConfiguration _configuration;
 
-        public AuthController(IUnitOfWork unitOfWork, IEmailService emailService, IConfiguration configuration)
+        public AuthController(
+            IUnitOfWork unitOfWork,
+            IEmailService emailService)
         {
             _unitOfWork = unitOfWork;
             _emailService = emailService;
-            _configuration = configuration;
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var employee = await _unitOfWork.Employees.GetByDocumentAsync(loginDto.Document);
-            
-            if (employee == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, employee.PasswordHash))
-                return Unauthorized(new { message = "Credenciales inválidas" });
-
-            if (!employee.IsEnabled)
-                return Unauthorized(new { message = "Cuenta deshabilitada" });
-
-            var token = GenerateJwtToken(employee);
-            
-            return Ok(new AuthResponseDto
-            {
-                Token = token,
-                FullName = $"{employee.FirstName} {employee.LastName}",
-                Email = employee.Email,
-                Document = employee.Document,
-                Role = employee.Position?.Name ?? "Employee"
-            });
-        }
-
+        /// <summary>
+        /// Autoregistro de empleado (público)
+        /// </summary>
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
+        public async Task<IActionResult> Register([FromBody] RegisterEmployeeDto dto)
         {
             if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
+            }
 
-            var existingEmployee = await _unitOfWork.Employees.GetByDocumentAsync(registerDto.Document);
-            if (existingEmployee != null)
-                return BadRequest(new { message = "El documento ya está registrado" });
-
-            var position = (await _unitOfWork.Positions.GetAllAsync()).FirstOrDefault();
-            var department = (await _unitOfWork.Departments.GetAllAsync()).FirstOrDefault();
-            var status = (await _unitOfWork.EmployeeStatuses.GetAllAsync()).FirstOrDefault(s => s.Name == "Activo");
-            var education = (await _unitOfWork.EducationLevels.GetAllAsync()).FirstOrDefault();
-
-            var employee = new Employee
+            try
             {
-                Document = registerDto.Document,
-                FirstName = registerDto.FirstName,
-                LastName = registerDto.LastName,
-                Email = registerDto.Email,
-                Phone = registerDto.Phone,
-                Address = registerDto.Address,
-                BirthDate = registerDto.BirthDate,
-                PositionId = position?.Id ?? 1,
-                DepartmentId = department?.Id ?? 1,
-                EmployeeStatusId = status?.Id ?? 1,
-                EducationLevelId = education?.Id ?? 1,
-                Salary = registerDto.Salary,
-                HireDate = DateTime.UtcNow,
-                ProfessionalProfile = registerDto.ProfessionalProfile ?? "Nuevo empleado",
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password),
-                IsEnabled = true,
-                RegistrationDate = DateTime.UtcNow
-            };
+                // Verificar si el documento ya existe
+                var existingEmployee = await _unitOfWork.Employees.GetByDocumentAsync(dto.Document);
+                if (existingEmployee != null)
+                {
+                    return BadRequest(new { message = "Ya existe un empleado con este documento" });
+                }
 
-            await _unitOfWork.Employees.AddAsync(employee);
-            await _unitOfWork.CompleteAsync();
+                // Verificar si el email ya existe
+                var existingEmail = await _unitOfWork.Employees.GetByEmailAsync(dto.Email);
+                if (existingEmail != null)
+                {
+                    return BadRequest(new { message = "Ya existe un empleado con este email" });
+                }
 
-            var token = GenerateJwtToken(employee);
+                // Validar que existan los IDs de referencia
+                var departmentExists = await _unitOfWork.Departments.GetByIdAsync(dto.DepartmentId);
+                var positionExists = await _unitOfWork.Positions.GetByIdAsync(dto.PositionId);
+                var educationExists = await _unitOfWork.EducationLevels.GetByIdAsync(dto.EducationLevelId);
 
-            return Ok(new AuthResponseDto
+                if (departmentExists == null || positionExists == null || educationExists == null)
+                {
+                    return BadRequest(new { message = "Uno o más datos de referencia son inválidos" });
+                }
+
+                // Crear el nuevo empleado
+                var employee = new Employee
+                {
+                    Document = dto.Document,
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    Email = dto.Email,
+                    Phone = dto.Phone,
+                    Address = dto.Address ?? string.Empty,
+                    BirthDate = dto.BirthDate,
+                    DepartmentId = dto.DepartmentId,
+                    PositionId = dto.PositionId,
+                    EducationLevelId = dto.EducationLevelId,
+                    ProfessionalProfile = dto.ProfessionalProfile ?? string.Empty,
+                    EmployeeStatusId = 2, // Inactivo por defecto
+                    IsEnabled = false, // Deshabilitado hasta que admin lo habilite
+                    RegistrationDate = DateTime.UtcNow,
+                    HireDate = DateTime.UtcNow,
+                    Salary = 0 // Será asignado por el admin
+                };
+
+                await _unitOfWork.Employees.AddAsync(employee);
+                await _unitOfWork.CompleteAsync();
+
+                // Enviar correo de bienvenida
+                var emailSent = await _emailService.SendWelcomeEmailAsync(
+                    employee.Email, 
+                    $"{employee.FirstName} {employee.LastName}"
+                );
+
+                if (!emailSent)
+                {
+                    return Ok(new
+                    {
+                        success = true,
+                        message = "Registro exitoso, pero no se pudo enviar el correo de bienvenida",
+                        data = new
+                        {
+                            id = employee.Id,
+                            document = employee.Document,
+                            fullName = $"{employee.FirstName} {employee.LastName}",
+                            email = employee.Email,
+                            emailSent = false
+                        }
+                    });
+                }
+
+                return Ok(new
+                {
+                    success = true,
+                    message = "Registro exitoso. Se ha enviado un correo de confirmación a tu email",
+                    data = new
+                    {
+                        id = employee.Id,
+                        document = employee.Document,
+                        fullName = $"{employee.FirstName} {employee.LastName}",
+                        email = employee.Email,
+                        emailSent = true
+                    }
+                });
+            }
+            catch (Exception ex)
             {
-                Token = token,
-                FullName = $"{employee.FirstName} {employee.LastName}",
-                Email = employee.Email,
-                Document = employee.Document,
-                Role = position?.Name ?? "Employee"
-            });
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Error al procesar el registro",
+                    error = ex.Message
+                });
+            }
         }
 
-        private string GenerateJwtToken(Employee employee)
+        /// <summary>
+        /// Login de empleado (público) - próximamente con JWT
+        /// </summary>
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-                _configuration["Jwt:Key"] ?? "default_secret_key_32_chars_long!"));
-            
-            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, employee.Id.ToString()),
-                new Claim(ClaimTypes.Name, $"{employee.FirstName} {employee.LastName}"),
-                new Claim(ClaimTypes.Email, employee.Email ?? ""),
-                new Claim("document", employee.Document)
-            };
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"] ?? "TalentoPlus",
-                audience: _configuration["Jwt:Audience"] ?? "TalentoPlusClients",
-                claims: claims,
-                expires: DateTime.UtcNow.AddDays(7),
-                signingCredentials: credentials
-            );
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            // TODO: Implementar en la siguiente fase con JWT
+            return Ok(new { message = "Login endpoint - próximamente" });
         }
+    }
+
+    public class LoginDto
+    {
+        [Required(ErrorMessage = "El documento o email es requerido")]
+        public string DocumentOrEmail { get; set; } = string.Empty;
     }
 }

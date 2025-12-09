@@ -1,21 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using TalentoPlus.Core.Interfaces;
+using TalentoPlus.Core.DTOs;
+using TalentoPlus.Web.Services;
 
 namespace TalentoPlus.Web.Controllers
 {
     public class EmployeesController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IApiService _apiService;
 
-        public EmployeesController(IUnitOfWork unitOfWork)
+        public EmployeesController(IApiService apiService)
         {
-            _unitOfWork = unitOfWork;
+            _apiService = apiService;
         }
 
+        // GET: Employees (ÚNICA VISTA)
         public async Task<IActionResult> Index()
         {
-            var employees = await _unitOfWork.Employees.GetAllAsync();
+            var employees = await _apiService.GetEmployeesAsync();
             return View(employees);
         }
     }

@@ -22,7 +22,6 @@ namespace TalentoPlus.Core.Entities
         public decimal Salary { get; set; }
         public DateTime HireDate { get; set; }
         public string ProfessionalProfile { get; set; }
-        public string PasswordHash { get; set; }
         public bool IsEnabled { get; set; } = false;
         public DateTime RegistrationDate { get; set; } = DateTime.UtcNow;
         

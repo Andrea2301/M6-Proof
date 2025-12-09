@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "tb3QPQ/C6x8=",
+  "dgSpecHash": "LBfcC/fTY24=",
   "success": true,
-  "projectFilePath": "/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj",
+  "projectFilePath": "/home/coders/Documentos/camila/M6-Proof/src/TalentoPlus.Shared/TalentoPlus.Shared.csproj",
   "expectedPackageFiles": [
-    "/home/cami/.nuget/packages/microsoft.netcore.app.ref/8.0.22/microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
-    "/home/cami/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.22/microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512"
+    "/home/coders/.nuget/packages/microsoft.netcore.app.ref/8.0.22/microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
+    "/home/coders/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.22/microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512"
   ],
   "logs": []
 }

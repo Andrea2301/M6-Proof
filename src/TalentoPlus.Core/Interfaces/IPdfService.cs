@@ -1,9 +1,11 @@
 using System.Threading.Tasks;
+using TalentoPlus.Core.Entities;
 
 namespace TalentoPlus.Core.Interfaces
 {
     public interface IPdfService
     {
-        Task<byte[]> GenerateResumeAsync(Entities.Employee employee);
+        byte[] GenerateEmployeeResume(Employee employee);
+        Task<byte[]> GenerateEmployeeResumeAsync(int employeeId);
     }
 }
