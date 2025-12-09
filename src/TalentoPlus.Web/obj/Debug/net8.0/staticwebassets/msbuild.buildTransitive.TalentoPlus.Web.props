@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/TalentoPlus.Web.props" />
+</Project>

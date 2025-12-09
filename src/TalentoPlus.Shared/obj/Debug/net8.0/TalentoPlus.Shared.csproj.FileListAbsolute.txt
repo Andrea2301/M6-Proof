@@ -1,0 +1,11 @@
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/bin/Debug/net8.0/TalentoPlus.Shared.deps.json
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/bin/Debug/net8.0/TalentoPlus.Shared.dll
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/bin/Debug/net8.0/TalentoPlus.Shared.pdb
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/obj/Debug/net8.0/TalentoPlus.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/obj/Debug/net8.0/TalentoPlus.Shared.AssemblyInfoInputs.cache
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/obj/Debug/net8.0/TalentoPlus.Shared.AssemblyInfo.cs
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/obj/Debug/net8.0/TalentoPlus.Shared.csproj.CoreCompileInputs.cache
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/obj/Debug/net8.0/TalentoPlus.Shared.dll
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/obj/Debug/net8.0/refint/TalentoPlus.Shared.dll
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/obj/Debug/net8.0/TalentoPlus.Shared.pdb
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Shared/obj/Debug/net8.0/ref/TalentoPlus.Shared.dll

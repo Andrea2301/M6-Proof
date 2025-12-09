@@ -1,0 +1,9 @@
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/obj/Debug/net8.0/TalentoPlus.Api.csproj.AssemblyReference.cache
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/obj/Debug/net8.0/TalentoPlus.Api.GeneratedMSBuildEditorConfig.editorconfig
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/obj/Debug/net8.0/TalentoPlus.Api.AssemblyInfoInputs.cache
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/obj/Debug/net8.0/TalentoPlus.Api.AssemblyInfo.cs
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/obj/Debug/net8.0/TalentoPlus.Api.csproj.CoreCompileInputs.cache
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/obj/Debug/net8.0/TalentoPlus.Api.MvcApplicationPartsAssemblyInfo.cs
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/obj/Debug/net8.0/TalentoPlus.Api.MvcApplicationPartsAssemblyInfo.cache
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/obj/Debug/net8.0/TalentoPlus.Api.RazorAssemblyInfo.cache
+/home/cami/RiderProjects/TalentoPlus2.0/src/TalentoPlus.Api/obj/Debug/net8.0/TalentoPlus.Api.RazorAssemblyInfo.cs

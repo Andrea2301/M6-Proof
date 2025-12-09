@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+    <h1>Dashboard</h1>
+    
+    <!-- Stats Cards -->
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Total Employees</h5>
+                    <h2 class="display-4">@ViewBag.TotalEmployees</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Departments</h5>
+                    <h2 class="display-4">@ViewBag.TotalDepartments</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card text-white bg-info">
+                <div class="card-body">
+                    <h5 class="card-title">Positions</h5>
+                    <h2 class="display-4">@ViewBag.TotalPositions</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Insights -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">
+                        <i class="bi bi-robot"></i> AI Insights
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p>@ViewBag.AIInsight</p>
+                    <div class="text-muted small">
+                        <i class="bi bi-info-circle"></i> This is a mock AI response. Connect to Gemini API for real insights.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2 d-md-flex">
+                        <a href="@Url.Action("Index", "Employees")" class="btn btn-primary me-2">
+                            <i class="bi bi-people"></i> Manage Employees
+                        </a>
+                        <a href="@Url.Action("Index", "Import")" class="btn btn-success me-2">
+                            <i class="bi bi-upload"></i> Import Data
+                        </a>
+                        <a href="/" class="btn btn-info">
+                            <i class="bi bi-house"></i> Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

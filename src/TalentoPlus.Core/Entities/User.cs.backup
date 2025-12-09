@@ -1,0 +1,11 @@
+using System;
+using Microsoft.AspNetCore.Identity;
+
+namespace TalentoPlus.Core.Entities
+{
+    public class User : IdentityUser
+    {
+        public string FullName { get; set; }
+        public DateTime RegistrationDate { get; set; } = DateTime.UtcNow;
+    }
+}
