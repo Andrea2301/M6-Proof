@@ -1,56 +1,91 @@
-# TalentPlus HR Management System
+TalentPlus HR Management System
+Overview
 
-## Overview
-TalentPlus HR Management System is a comprehensive web application and REST API built with ASP.NET Core for managing employee information, automating HR processes, and providing intelligent insights through AI integration.
+TalentPlus HR Management System is a comprehensive web application and REST API built with ASP.NET Core for managing employee information, automating HR processes, and providing intelligent insights. The platform offers features such as employee registration, department management, bulk data import, and dynamic PDF report generation.
 
-## Features
+Features
+Web Application (HR Admin Portal)
 
-###  Web Application (HR Admin Portal)
-- **Employee Management**: Full CRUD operations for employees
-- **Excel Import**: Upload and process Excel files to update employee database
-- **PDF Generation**: Dynamic CV/Resume generation for employees
-- **AI-Powered Dashboard**: 
-  - Real-time statistics (total employees, vacation status, etc.)
-  - Natural language query interface using AI (Gemini/OpenAI)
-- **Admin Authentication**: ASP.NET Core Identity
+Employee Management: Full CRUD operations for employee records.
 
-###  REST API
-- **Public Endpoints**:
-  - List departments
-  - Employee self-registration
-  - Employee login (JWT authentication)
-- **Protected Endpoints** (JWT required):
-  - Get employee information
-  - Download personal CV in PDF format
-- **Real Email Integration**: Welcome emails sent via SMTP
+Excel Import: Upload and process Excel files to update the employee database.
 
-## Technology Stack
-- **Backend**: ASP.NET Core 8.0
-- **Database**: PostgreSQL
-- **Authentication**: ASP.NET Core Identity + JWT
-- **AI Integration**: Google Gemini (or alternative)
-- **PDF Generation**: iTextSharp or similar
-- **Excel Processing**: EPPlus or ClosedXML
-- **Email Service**: SMTP integration
-- **Containerization**: Docker & Docker Compose
-- **Testing**: xUnit/NUnit
+PDF Generation: Dynamic generation of employee CVs and resumes in PDF format.
 
-## Architecture
-- **Pattern**: Repository Pattern with Clean Architecture
-- **Layers**:
-  - Presentation Layer (Web API + MVC)
-  - Application/Business Layer
-  - Domain Layer
-  - Infrastructure Layer
-- **Separation of Concerns**: Clear division between presentation, domain, and infrastructure
+Admin Authentication: ASP.NET Core Identity for admin login and user management.
 
-## Prerequisites
-- .NET 8.0 SDK
-- Docker & Docker Compose
-- PostgreSQL 15+
-- Google Gemini API key (for AI features)
-- SMTP credentials (for email service)
+Role-based Access: Admins and users can be assigned specific permissions.
 
+REST API
+
+Public Endpoints:
+
+List departments.
+
+Employee self-registration.
+
+Employee login (JWT authentication).
+
+Protected Endpoints (JWT required):
+
+Retrieve employee information.
+
+Download personal CV in PDF format.
+
+Real Email Integration: Sends welcome emails via SMTP.
+
+Technology Stack
+
+Backend: ASP.NET Core 8.0
+
+Database: PostgreSQL 15+
+
+Authentication: ASP.NET Core Identity + JWT
+
+PDF Generation: iTextSharp or similar
+
+Excel Processing: EPPlus or ClosedXML
+
+Email Service: SMTP (e.g., Gmail, SendGrid)
+
+Containerization: Docker & Docker Compose
+
+Testing: xUnit/NUnit
+
+Swagger UI: Interactive UI for testing and documenting the API.
+
+Architecture
+
+Pattern: Repository Pattern with Clean Architecture.
+
+Layers:
+
+Presentation Layer: Web API + MVC (User Interface layer).
+
+Application/Business Layer: Core business logic.
+
+Domain Layer: Domain entities and rules.
+
+Infrastructure Layer: Database integration, authentication, and external services.
+
+Separation of Concerns: A modular structure with a clear division of responsibilities.
+
+Prerequisites
+
+Before running the application, ensure that the following tools are installed:
+
+.NET 8.0 SDK: To run the ASP.NET Core application.
+
+Docker & Docker Compose: For containerization and orchestration.
+
+PostgreSQL 15+: Relational database.
+
+SMTP Credentials: For sending emails (e.g., Gmail, SendGrid).
+
+Setup Instructions
+Environment Configuration
+
+Database Configuration
 ## Setup Instructions
 
 # Database
@@ -82,16 +117,78 @@ API_URL=http://localhost:5001
 
 docker-compose up --build
 Access Credentials
-Default Admin Account
-URL: http://localhost:5000
+---
+##API Endpoints
+## Auth
+| Method | Endpoint              | Description                  |
+|--------|------------------------|------------------------------|
+| POST   | /api/Auth/register    | Register a new employee      |
+| POST   | /api/Auth/login       | Log in and receive a JWT     |
 
-Username: admin@talentplus.com
 
-Password: Admin@123
+### Catalogs
+- **GET** `/api/Catalogs/positions`
+- **GET** `/api/Catalogs/education-levels`
+- **GET** `/api/Catalogs/employee-statuses`
+- **GET** `/api/Catalogs/all`
 
-API Access
+### Departments
+- **GET** `/api/Departments`
+- **GET** `/api/Departments/{id}`
+
+
+### EducationLevels
+- **GET** `/api/EducationLevels`
+- **POST** `/api/EducationLevels`
+- **GET** `/api/EducationLevels/{id}`
+- **PUT** `/api/EducationLevels/{id}`
+- **DELETE** `/api/EducationLevels/{id}`
+
+### Employees
+- **POST** `/api/Employees/import-excel`
+- **GET** `/api/Employees`
+- **POST** `/api/Employees`
+- **GET** `/api/Employees/{id}`
+- **PUT** `/api/Employees/{id}`
+- **DELETE** `/api/Employees/{id}`
+- **GET** `/api/Employees/{id}/resume-pdf`
+
+
+### EmployeeStatuses
+- **GET** `/api/EmployeeStatuses`
+- **GET** `/api/EmployeeStatuses/{id}`
+
+
+
+### Positions
+- **GET** `/api/Positions`
+- **POST** `/api/Positions`
+- **GET** `/api/Positions/{id}`
+- **PUT** `/api/Positions/{id}`
+- **DELETE** `/api/Positions/{id}`
+
+---
+
+
+## API Access
 Base URL: http://localhost:5001
 
 Swagger UI: http://localhost:5001/swagger
 
 ---
+Running the Application
+
+Build Docker Containers:
+Run the following command to build the containers and start the application:
+
+docker-compose up --build
+
+
+Access the HR Admin Portal:
+URL: http://localhost:5000
+
+
+Access the API:
+API Base URL: http://localhost:5001
+
+Swagger UI: http://localhost:5001/swagger
