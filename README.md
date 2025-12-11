@@ -1,92 +1,72 @@
-TalentPlus HR Management System
-Overview
+# TalentPlus HR Management System
 
-TalentPlus HR Management System is a comprehensive web application and REST API built with ASP.NET Core for managing employee information, automating HR processes, and providing intelligent insights. The platform offers features such as employee registration, department management, bulk data import, and dynamic PDF report generation.
+## Overview
+TalentPlus HR Management System is a comprehensive web application and REST API built with ASP.NET Core for managing employee information, automating HR processes, and supporting key HR workflows such as PDF generation, Excel data imports, employee records, and secure authentication.
 
-Features
-Web Application (HR Admin Portal)
+---
 
-Employee Management: Full CRUD operations for employee records.
+## Features
 
-Excel Import: Upload and process Excel files to update the employee database.
+### Web Application (HR Admin Portal)
+- **Employee Management** – Full CRUD operations.
+- **Excel Import** – Upload and process Excel files to update the employee database.
+- **PDF Generation** – Dynamic CV/Resume generation in PDF format.
+- **Admin Authentication** – Built using ASP.NET Core Identity.
+- **Role-based Access Control** – Secure user and admin permissions.
 
-PDF Generation: Dynamic generation of employee CVs and resumes in PDF format.
+### REST API
 
-Admin Authentication: ASP.NET Core Identity for admin login and user management.
+#### Public Endpoints
+- List departments.
+- Employee self-registration.
+- Employee login (JWT authentication).
 
-Role-based Access: Admins and users can be assigned specific permissions.
+#### Protected Endpoints (JWT required)
+- Retrieve employee information.
+- Download employee CV in PDF format.
 
-REST API
+### Real Email Integration
+- Sends welcome emails via SMTP.
 
-Public Endpoints:
+---
 
-List departments.
+## Technology Stack
+- **Backend:** ASP.NET Core 8.0  
+- **Database:** PostgreSQL  
+- **Authentication:** ASP.NET Core Identity + JWT  
+- **PDF Generation:** iTextSharp or similar  
+- **Excel Processing:** EPPlus or ClosedXML  
+- **Email Service:** SMTP  
+- **Containerization:** Docker & Docker Compose  
+- **Testing:** xUnit / NUnit  
 
-Employee self-registration.
+---
 
-Employee login (JWT authentication).
+## Architecture
+- **Pattern:** Repository Pattern with Clean Architecture  
+- **Layers:**
+  - Presentation Layer (Web API + MVC)
+  - Application / Business Layer
+  - Domain Layer
+  - Infrastructure Layer
+- **Separation of Concerns:** Clear and modular project structure.
 
-Protected Endpoints (JWT required):
+---
 
-Retrieve employee information.
+## Prerequisites
+Before running the application, ensure the following are installed:
 
-Download personal CV in PDF format.
+- .NET 8.0 SDK  
+- Docker & Docker Compose  
+- PostgreSQL 15+  
+- SMTP credentials (Gmail, Outlook, SendGrid, etc.)  
 
-Real Email Integration: Sends welcome emails via SMTP.
+---
 
-Technology Stack
-
-Backend: ASP.NET Core 8.0
-
-Database: PostgreSQL 15+
-
-Authentication: ASP.NET Core Identity + JWT
-
-PDF Generation: iTextSharp or similar
-
-Excel Processing: EPPlus or ClosedXML
-
-Email Service: SMTP (e.g., Gmail, SendGrid)
-
-Containerization: Docker & Docker Compose
-
-Testing: xUnit/NUnit
-
-Swagger UI: Interactive UI for testing and documenting the API.
-
-Architecture
-
-Pattern: Repository Pattern with Clean Architecture.
-
-Layers:
-
-Presentation Layer: Web API + MVC (User Interface layer).
-
-Application/Business Layer: Core business logic.
-
-Domain Layer: Domain entities and rules.
-
-Infrastructure Layer: Database integration, authentication, and external services.
-
-Separation of Concerns: A modular structure with a clear division of responsibilities.
-
-Prerequisites
-
-Before running the application, ensure that the following tools are installed:
-
-.NET 8.0 SDK: To run the ASP.NET Core application.
-
-Docker & Docker Compose: For containerization and orchestration.
-
-PostgreSQL 15+: Relational database.
-
-SMTP Credentials: For sending emails (e.g., Gmail, SendGrid).
-
-Setup Instructions
-Environment Configuration
-
-Database Configuration
 ## Setup Instructions
+
+### Environment Configuration
+
 
 # Database
 DB_HOST=localhost
@@ -100,15 +80,17 @@ JWT_KEY=YourSuperSecretKeyHereMinimum32CharactersLong!
 JWT_ISSUER=TalentPlus
 JWT_AUDIENCE=TalentPlusClients
 
-# AI Configuration (Gemini)
-GEMINI_API_KEY=your_gemini_api_key_here
-
 # Email Configuration
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASSWORD=your-app-specific-password
 SMTP_FROM=noreply@talentplus.com
+
+# Application URLs
+WEB_URL=http://localhost:5000
+API_URL=http://localhost:5001
+
 
 # Application URLs
 WEB_URL=http://localhost:5000
